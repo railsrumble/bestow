@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
+
   <%#
     Configure default and controller-, and view-specific titles in
     config/locales/en.yml. For more see:
@@ -13,7 +14,17 @@
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body class="<%= body_class %>">
+  <% if signed_in? %>
+    <div data-role="current-user">
+      <%= current_user.email %>
+      <%= button_to "Sign out", sign_out_path, method: :delete %>
+    </div>
+  <% else %>
+    <%= link_to "Sign in", sign_in_path %>
+  <% end %>
+
   <%= render "flashes" -%>
   <%= yield %>
   <%= render "javascript" %>
