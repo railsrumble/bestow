@@ -1,0 +1,6 @@
+<% @people.each do |person| %>
+  <div data-role="person"><%= person.name %></div>
+  <div data-role="amount"><%= number_to_currency(person.amount) %></div>
+<% end %>
+
+<%= link_to("Add person", new_person_path) %>
