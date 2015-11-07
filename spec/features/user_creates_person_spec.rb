@@ -3,6 +3,12 @@ require "rails_helper"
 feature "user creates person" do
   scenario "successfully" do
     visit root_path(as: create(:user))
+
+    fill_in "Name", with: "Christmas 2015"
+    click_on "Create List"
+
+    expect(page).to have_list("Christmas 2015")
+
     click_on "Add person"
 
     fill_in "Name", with: "Jolly Nick"
@@ -16,7 +22,8 @@ feature "user creates person" do
   end
 
   scenario "without a name" do
-    visit root_path(as: create(:user))
+    list = create(:list)
+    visit list_path(list, as: list.user)
     click_on "Add person"
 
     fill_in "Amount", with: 20.00
@@ -26,7 +33,8 @@ feature "user creates person" do
   end
 
   scenario "without a picture" do
-    visit root_path(as: create(:user))
+    list = create(:list)
+    visit list_path(list, as: list.user)
     click_on "Add person"
 
     fill_in "Name", with: "Jolly Nick"
@@ -49,5 +57,9 @@ feature "user creates person" do
 
   def have_error
     have_css(".error")
+  end
+
+  def have_list(name)
+    have_role_with_text("list", name)
   end
 end

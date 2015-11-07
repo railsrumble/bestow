@@ -1,5 +1,5 @@
 require "rails_helper"
 
 describe User do
-  it { should have_many(:people) }
+  it { should have_many(:lists) }
 end

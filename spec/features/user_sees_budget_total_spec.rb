@@ -1,11 +1,12 @@
 require "rails_helper"
 
 feature "user sees budget total" do
-  scenario "for multiple people" do
-    user = create(:user)
-    create(:person, user: user, amount: 10)
-    create(:person, user: user, amount: 115.5)
-    visit root_path(as: user)
+  scenario "for a list" do
+    list = create(:list)
+    create(:person, list: list, amount: 10)
+    create(:person, list: list, amount: 115.5)
+
+    visit list_path(list, as: list.user)
 
     expect(page).to have_total("$125.50")
   end

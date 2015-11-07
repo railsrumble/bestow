@@ -1,8 +1,4 @@
 class PeopleController < ApplicationController
-  def index
-    @people = current_user.people
-  end
-
   def new
     @person = Person.new
   end
@@ -11,7 +7,7 @@ class PeopleController < ApplicationController
     person = Person.new(person_params)
 
     if person.save
-      redirect_to people_path, notice: "YAY"
+      redirect_to list_path(list), notice: "YAY"
     else
       @person = person
       render :new
@@ -24,10 +20,15 @@ class PeopleController < ApplicationController
     params.
       require(:person).
       permit(permitted_attributes).
-      merge(user: current_user)
+      merge(list: list)
   end
 
   def permitted_attributes
     [:amount, :avatar, :name]
   end
+
+  def list
+    @list ||= current_user.lists.find(params[:list_id])
+  end
+  helper_method :list
 end

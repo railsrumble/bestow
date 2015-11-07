@@ -1,4 +1,4 @@
-<%= simple_form_for @person do |form| %>
+<%= simple_form_for [list, @person] do |form| %>
   <%= form.input :name %>
   <%= form.input :amount %>
   <%= form.input :avatar, as: :file %>

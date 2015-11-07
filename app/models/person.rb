@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :list
 
   validates :name, presence: true
   has_attached_file :avatar,
