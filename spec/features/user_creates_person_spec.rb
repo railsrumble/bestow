@@ -58,8 +58,4 @@ feature "user creates person" do
   def have_error
     have_css(".error")
   end
-
-  def have_list(name)
-    have_role_with_text("list", name)
-  end
 end

@@ -2,3 +2,9 @@
   <%= form.input :name %>
   <%= form.button :submit, "Create List" %>
 <% end %>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li data-role="list"><%= link_to list.name, list %></li>
+  <% end %>
+</ul>
