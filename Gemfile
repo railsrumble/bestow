@@ -24,6 +24,9 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
+gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '>= 2.0.0'
+
 
 group :development do
   gem "quiet_assets"
