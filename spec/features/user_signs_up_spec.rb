@@ -13,6 +13,6 @@ feature "user signs up" do
   end
 
   def have_current_user(email)
-    have_css("[data-role=current-user]", text: email)
+    have_role_with_text("current-user", email)
   end
 end

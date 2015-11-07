@@ -24,11 +24,11 @@ feature "user creates person" do
   end
 
   def have_person_on_list(name)
-    have_css("[data-role=person]", text: name)
+    have_role_with_text("person", name)
   end
 
   def have_budgeted_amount_for(amount)
-    have_css("[data-role=amount]", text: amount)
+    have_role_with_text("amount", amount)
   end
 
   def have_error
