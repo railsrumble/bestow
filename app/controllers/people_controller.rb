@@ -14,6 +14,11 @@ class PeopleController < ApplicationController
     end
   end
 
+  def show
+    @person = list.people.find(params[:id])
+    @purchased_gifts = @person.purchased_gifts
+  end
+
   private
 
   def person_params

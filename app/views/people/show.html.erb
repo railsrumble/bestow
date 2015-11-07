@@ -1,0 +1,7 @@
+<% @purchased_gifts.each do |purchased_gift| %>
+  <div data-role="name"><%= purchased_gift.name %></div>
+  <div data-role="url"><%= purchased_gift.url %></div>
+  <div data-role="amount"><%= number_to_currency(purchased_gift.amount) %></div>
+<% end %>
+
+<%= link_to("Add purchased gift", new_list_person_purchased_gift_path(list, @person))%>

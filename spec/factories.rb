@@ -11,8 +11,15 @@ FactoryGirl.define do
   end
 
   factory :person do
-    sequence(:name)  { |n| "Person #{n}" }
+    list
+    sequence(:name) { |n| "Person #{n}" }
     amount 100.5
+  end
+
+  factory :purchased_gift do
+    person
+    sequence(:name) { |n| "Purchased Gift #{n}" }
+    amount 1.5
   end
 
   factory :user do

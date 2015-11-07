@@ -1,0 +1,6 @@
+<%= simple_form_for [list, person, @purchased_gift] do |form| %>
+  <%= form.input :name %>
+  <%= form.input :url %>
+  <%= form.input :amount %>
+  <%= form.button :submit, "Add purchased gift" %>
+<% end %>
