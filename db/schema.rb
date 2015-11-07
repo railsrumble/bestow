@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107162329) do
+ActiveRecord::Schema.define(version: 20151107200431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,29 @@ ActiveRecord::Schema.define(version: 20151107162329) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "list_id",     null: false
+    t.integer  "user_id",     null: false
+    t.string   "email",       null: false
+    t.string   "code",        null: false
+    t.datetime "accepted_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "invitations", ["list_id"], name: "index_invitations_on_list_id", using: :btree
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
+
+  create_table "list_shares", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "list_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "list_shares", ["list_id"], name: "index_list_shares_on_list_id", using: :btree
+  add_index "list_shares", ["user_id"], name: "index_list_shares_on_user_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string   "name",       null: false
@@ -78,6 +101,10 @@ ActiveRecord::Schema.define(version: 20151107162329) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "invitations", "lists"
+  add_foreign_key "invitations", "users"
+  add_foreign_key "list_shares", "lists"
+  add_foreign_key "list_shares", "users"
   add_foreign_key "lists", "users"
   add_foreign_key "people", "lists"
   add_foreign_key "purchased_gifts", "people"

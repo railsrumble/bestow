@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def index
     @list = List.new
-    @lists = current_user.lists
+    @lists = current_user.all_lists
   end
 
   def create
@@ -16,7 +16,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = current_user.lists.find(params[:id])
+    list = current_user.all_lists.find(params[:id]).first
+    @presenter = ListPresenter.new(list, current_user)
   end
 
   private

@@ -1,11 +1,20 @@
-<div data-role="list"><%= @list.name %></div>
+<div data-role="list"><%= @presenter.name %></div>
 
-<div data-role="total-amount"><%= number_to_currency(@list.people.sum(:amount)) %></div>
+<div data-role="total-amount"><%= number_to_currency(@presenter.total_amount) %></div>
 
-<% @list.people.each do |person| %>
+<% @presenter.people.each do |person| %>
   <div data-role="person-image"> <%= image_tag person.avatar.url(:thumb) %> </div>
   <div data-role="person"><%= person.name %></div>
   <div data-role="amount"><%= number_to_currency(person.amount) %></div>
 <% end %>
 
-<%= link_to("Add person", new_list_person_path(@list)) %>
+<% if @presenter.show_invitation? %>
+  <div data-role="invitation">
+    <%= simple_form_for [@presenter.list, @presenter.invitation] do |form| %>
+      <%= form.input :email %>
+      <%= form.button :submit, "Send Invitation" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to("Add person", new_list_person_path(@presenter.list)) %>

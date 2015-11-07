@@ -1,0 +1,5 @@
+<%= simple_form_for([@acceptance.invitation, @acceptance]) do |form| %>
+  <%= form.input :email %>
+  <%= form.input :password %>
+  <%= form.button :submit, "Accept Invitation" %>
+<% end %>

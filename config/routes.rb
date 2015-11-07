@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [:index, :create, :show] do
+    resources :invitations, only: [:create], shallow: true do
+      resources :acceptances, only: [:new, :create]
+    end
     resources :people, only: [:index, :new, :create, :show] do
       resources :purchased_gifts, only: [:new, :create]
     end

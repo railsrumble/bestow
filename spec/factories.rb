@@ -1,12 +1,33 @@
 FactoryGirl.define do
+  sequence :email do |n|
+    "user-#{n}@example.com"
+  end
+
+  trait :first_or_new_list do
+    before(:create) do |model|
+      model.list ||= List.first || create(:list)
+    end
+  end
+
   trait :first_or_new_user do
     before(:create) do |model|
       model.user ||= User.first || create(:user)
     end
   end
 
+  factory :invitation do
+    first_or_new_list
+    first_or_new_user
+    email
+  end
+
   factory :list do
-    name "My List"
+    sequence(:name) { |n| "List #{n}" }
+    first_or_new_user
+  end
+
+  factory :list_share do
+    first_or_new_list
     first_or_new_user
   end
 
@@ -23,7 +44,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:email) { |n| "user-#{n}@example.com" }
+    email
     password "password"
   end
 end
