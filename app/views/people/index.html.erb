@@ -1,4 +1,5 @@
 <% @people.each do |person| %>
+  <div> <%= image_tag person.avatar.url(:thumb) %> </div>
   <div data-role="person"><%= person.name %></div>
   <div data-role="amount"><%= number_to_currency(person.amount) %></div>
 <% end %>

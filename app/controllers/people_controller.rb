@@ -28,6 +28,6 @@ class PeopleController < ApplicationController
   end
 
   def permitted_attributes
-    [:name, :amount]
+    [:name, :amount, :avatar]
   end
 end
