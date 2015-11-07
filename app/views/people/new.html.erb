@@ -1,5 +1,6 @@
 <%= simple_form_for @person do |form| %>
   <%= form.input :name %>
   <%= form.input :amount %>
+  <%= form.input :avatar, as: :file %>
   <%= form.button :submit, "Add person" %>
 <% end %>

@@ -4,6 +4,7 @@ ruby "2.2.3"
 
 gem "airbrake"
 gem "autoprefixer-rails"
+gem 'aws-sdk', '>= 2.0.0'
 gem "bourbon", "~> 4.2.0"
 gem "clearance"
 gem "coffee-rails", "~> 4.1.0"
@@ -15,6 +16,7 @@ gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm", ">= 3.9.8"
 gem "normalize-rails", "~> 3.0.0"
+gem "paperclip", "~> 4.3"
 gem "pg"
 gem "puma"
 gem "rack-canonical-host"
@@ -24,6 +26,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
+
 
 group :development do
   gem "quiet_assets"
