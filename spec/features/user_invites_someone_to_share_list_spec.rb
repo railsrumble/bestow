@@ -20,6 +20,23 @@ feature "user invites someone to share a list" do
     end
   end
 
+  scenario "who does have an account" do
+    user = create(:user)
+    invited_user = create(:user, email: "user_to_share_with@example.com")
+    list = create(:list, user: user, name: "Bob's List")
+
+    visit list_path(list, as: user)
+
+    invite_user "user_to_share_with@example.com"
+
+    using_session :user_to_share_with do
+      visit list_path(list, as: invited_user)
+
+      expect(page).to have_list("Bob's List (shared from #{user.email})")
+      expect(page).not_to have_invitation_form
+    end
+  end
+
   def invite_user(email)
     fill_in "Email", with: email
     click_on "Send Invitation"
