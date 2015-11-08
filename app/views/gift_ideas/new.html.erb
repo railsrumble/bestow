@@ -1,3 +1,12 @@
+<% unless params[:amazon_lookup_complete] %>
+  <%= simple_form_for :amazon_lookup, url: amazon_lookups_path do |form| %>
+    <%= form.input :url, as: :string, label: "Amazon Url" %>
+    <%= form.input :list, as: :hidden, input_html: { value:  list.id } %>
+    <%= form.input :person, as: :hidden, input_html: { value: person.id }  %>
+    <%= form.button :submit, "Lookup" %>
+  <% end %>
+<% end %>
+
 <%= simple_form_for [list, person, @gift_idea] do |form| %>
   <%= form.input :url %>
   <%= form.input :name %>

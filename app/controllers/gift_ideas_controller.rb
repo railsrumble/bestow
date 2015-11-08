@@ -1,6 +1,6 @@
 class GiftIdeasController < ApplicationController
   def new
-    @gift_idea = GiftIdea.new
+    @gift_idea = GiftIdea.new(gift_idea_params)
   end
 
   def create
@@ -27,10 +27,14 @@ class GiftIdeasController < ApplicationController
   helper_method :person
 
   def gift_idea_params
-    params.
-      require(:gift_idea).
-      permit(permitted_attributes).
-      merge(person: person)
+    if params[:gift_idea]
+      params.
+        require(:gift_idea).
+        permit(permitted_attributes).
+        merge(person: person)
+    else
+      {amount: 0}
+    end
   end
 
   def permitted_attributes

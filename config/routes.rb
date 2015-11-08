@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     root "high_voltage/pages#show", id: "landing"
   end
 
+  resources :amazon_lookups, only: [:create]
+
   resources :lists, only: [:index, :show, :create, :edit, :update, :destroy] do
     resources :invitations, only: [:create], shallow: true do
       resources :acceptances, only: [:new, :create]

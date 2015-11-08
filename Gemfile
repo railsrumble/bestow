@@ -29,6 +29,7 @@ gem "simple_form"
 gem "time_for_a_boolean"
 gem "title"
 gem "uglifier"
+gem "vacuum"
 
 
 group :development do

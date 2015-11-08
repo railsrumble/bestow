@@ -5,6 +5,9 @@ end
 
 require "webmock/rspec"
 
+app_root = File.dirname(__dir__)
+$LOAD_PATH.push(app_root)
+
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
