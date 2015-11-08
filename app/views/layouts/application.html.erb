@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-
-  <%#
-    Configure default and controller-, and view-specific titles in
+  <head>
+    <meta charset="utf-8" />
+    <meta name="ROBOTS" content="NOODP" />
+    <meta name="viewport" content="initial-scale=1" />
+    <link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <%#
+        Configure default and controller-, and view-specific titles in
     config/locales/en.yml. For more see:
-    https://github.com/calebthompson/title#usage
-  %>
+      https://github.com/calebthompson/title#usage
+    %>
   <title><%= title %></title>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
-</head>
+  </head>
 
-<body class="<%= body_class %>">
-  <% if signed_in? %>
-    <div data-role="current-user">
-      <%= current_user.email %>
-      <%= button_to "Sign out", sign_out_path, method: :delete %>
-    </div>
-  <% else %>
-    <%= link_to "Sign in", sign_in_path %>
-  <% end %>
+  <body class="<%= body_class %>">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+              <%= link_to root_path, class: "nav navbar-brand" do %>
+                <li><%= image_tag "bestowsub.png", class: "responsive-img submark" %></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <% if signed_in? %>
+                  <a data-role="current-user">
+                    <%= current_user.email %>
+                    <%= button_to "SIGN OUT", sign_out_path, method: :delete %>
+                  <% else %>
+                    <%= link_to "SIGN IN", sign_in_path %>
+                  <% end %>
+                  </a>
+              </li>
 
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
-</body>
+              <%= link_to "SIGN UP", sign_up_path, class: "signup" %>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <%= render "flashes" -%>
+    <%= yield %>
+    <%= render "javascript" %>
+  </body>
 </html>

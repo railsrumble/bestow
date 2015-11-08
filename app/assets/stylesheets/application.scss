@@ -1,8 +1,163 @@
 @charset "utf-8";
-
 @import "normalize-rails";
-@import "bourbon";
-@import "base/grid-settings";
-@import "neat";
-@import "base/base";
-@import "refills/flashes";
+@import "bootstrap/bootstrap";
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background-image: -webkit-linear-gradient(#61CCA2 0%, #B29772 100%);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'bebasregular', 'open sans', 'helvetica', sans-serif;
+  color: white;
+  text-transform: uppercase;
+}
+a, div a {
+  font-family: 'bebasregular', 'open sans', 'helvetica', sans-serif;
+}
+p {
+  font-family: 'Arvo', georgia, serif;
+  color: white;
+}
+.submark {
+  height: 50px;
+}
+.navbar-default, .btn, .btn-default, button, div {
+  border-radius: 0px;
+}
+// CSS for the landing page ...
+#main-logo {
+  height: 30em;
+}
+.logo {
+  max-width: 900px;
+  width: 66%
+}
+#description {
+  font-size: 175%;
+  margin: 50px 1em 50px 1em;
+  padding: 2em 5em 2em 5em;
+}
+.signup, .signup a {
+  color: white;
+  background: #cd2027;
+  border: 2px solid #cd2027;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+.signup:hover, .signup a:hover {
+  color: #cd2027;
+  background: white;
+  border: 2px solid #cd2027;
+}
+
+#signup-btn {
+  height: 200px;
+}
+.btn-signup, .btn-signup:visited {
+  text-decoration: none;
+  color: white;
+  background-color: #cd2027;
+  font-size: 3em;
+  height: 100px;
+  width: 300px;
+  border: 2px solid white;
+  text-transform: uppercase;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.btn-signup a {
+  color: white;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+.btn-signup:hover {
+  border: 2px solid #cd2027;
+  background-color: white;
+}
+.btn-signup:hover a{
+  text-decoration: none;
+  color: #cd2027;
+}
+#person {
+  background-color: rgba(999, 999, 999, .4);
+  height: 100px;
+  width: 100px;
+  border: 2px solid #cd2027;
+  margin: 2em auto 2em 6em;
+  padding: 2em;
+}
+#person-amount {
+  height: 20px;
+  border: 2px solid #cd2027;
+  margin-top: 30px;
+  max-width: 600px;
+}
+// CSS for index...
+#plus {
+  padding-bottom: -20px;
+  margin-right: 0;
+}
+.btn-add-person {
+  color: white;
+  height: 50px;
+  width: 150px;
+  border: 2px solid #cd2027;
+  margin-left: 6em;
+  padding: 1em 1em 1em 1em;
+  text-transform: uppercase;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+.btn-signup, .btn-signup:visited {
+  text-decoration: none;
+  color: white;
+  background-color: #cd2027;
+  font-size: 3em;
+  height: 100px;
+  width: 300px;
+  border: 2px solid white;
+}
+.btn-signup a {
+  color: white;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+.btn-signup:hover {
+  border: 2px solid #cd2027;
+  background-color: white;
+}
+.btn-signup:hover a{
+  text-decoration: none;
+  color: #cd2027;
+}
+// Styling for the "SIGN UP" & SIGN IN forms
+.sign-in, .sign-in label, .sign-in input, .sign-in h2 {
+  text-align: center;
+  font-size: 125%;
+  margin: 3em auto 0 auto;
+  text-transform: uppercase;
+}
+.sign-up, .sign-up label, .sign-up input, .sign-up h2 {
+  text-align: center;
+  font-size: 125%;
+  margin: 3em auto 0 auto;
+  text-transform: uppercase;
+}
+@media(max-width:767px) {
+  .navbar-collapse li, .navbar-collapse a {
+    text-align: center;
+  }
+  li img {
+    margin-left: -10px;
+  }
+  .submark {
+    margin-left: -10px;
+  }
+}
