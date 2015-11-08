@@ -30,6 +30,4 @@ if ! command -v foreman > /dev/null; then
   gem install foreman
 fi
 
-# Only if this isn't CI
-# if [ -z "$CI" ]; then
-# fi
+git remote add staging git@heroku.com:sheltered-thicket-1221.git || true
