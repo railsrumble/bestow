@@ -15,6 +15,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :gift_idea do
+    sequence(:name) { |n| "Gift Idea #{n}" }
+    amount 10.25
+  end
+
   factory :invitation do
     first_or_new_list
     first_or_new_user

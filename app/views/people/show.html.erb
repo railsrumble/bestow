@@ -9,4 +9,11 @@
   <div data-role="amount"><%= number_to_currency(purchased_gift.amount) %></div>
 <% end %>
 
+<% @gift_ideas.each do |gift_idea| %>
+  <div data-role="name"><%= gift_idea.name %></div>
+  <div data-role="url"><%= gift_idea.url %></div>
+  <div data-role="amount"><%= number_to_currency(gift_idea.amount) %></div>
+<% end %>
+
 <%= link_to("Add purchased gift", new_list_person_purchased_gift_path(list, @person))%>
+<%= link_to("Add gift idea", new_list_person_gift_idea_path(list, @person))%>

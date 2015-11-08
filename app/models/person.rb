@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
   belongs_to :list
 
+  has_many :gift_ideas
   has_many :purchased_gifts
 
   validates :name, presence: true

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :acceptances, only: [:new, :create]
     end
     resources :people, only: [:index, :new, :create, :show] do
+      resources :gift_ideas, only: [:new, :create]
       resources :purchased_gifts, only: [:new, :create]
     end
   end

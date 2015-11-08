@@ -17,6 +17,7 @@ class PeopleController < ApplicationController
   def show
     @person = list.people.find(params[:id])
     @purchased_gifts = @person.purchased_gifts
+    @gift_ideas = @person.gift_ideas
   end
 
   private
