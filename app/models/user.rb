@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include Clearance::User
 
   has_many :invitations
-  has_many :lists
+  has_many :lists, dependent: :destroy
   has_many :list_shares
   has_many :others_lists, through: :list_shares, source: :list
 

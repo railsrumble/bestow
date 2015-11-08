@@ -1,8 +1,8 @@
 class Person < ActiveRecord::Base
   belongs_to :list
 
-  has_many :gift_ideas
-  has_many :purchased_gifts
+  has_many :gift_ideas, dependent: :destroy
+  has_many :purchased_gifts, dependent: :destroy
 
   validates :name, presence: true
   has_attached_file :avatar,

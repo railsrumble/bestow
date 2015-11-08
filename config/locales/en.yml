@@ -17,3 +17,10 @@ en:
 
   titles:
     application: Bestow
+
+  helpers:
+    submit:
+      list:
+        update: "Save changes"
+        create: "Create list"
+        destroy: "Delete"

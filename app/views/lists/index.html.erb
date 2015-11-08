@@ -1,7 +1,4 @@
-<%= simple_form_for @list do |form| %>
-  <%= form.input :name %>
-  <%= form.button :submit, "Create List" %>
-<% end %>
+<%= render partial: "form" %>
 
 <ul>
   <% @lists.each do |list| %>

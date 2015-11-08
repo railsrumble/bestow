@@ -5,7 +5,7 @@ feature "user creates person" do
     visit root_path(as: create(:user))
 
     fill_in "Name", with: "Christmas 2015"
-    click_on "Create List"
+    click_on "Create list"
 
     expect(page).to have_list("Christmas 2015")
 
