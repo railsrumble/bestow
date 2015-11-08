@@ -1,3 +1,8 @@
+<div data-role="person-name"><%= @person.name %></div>
+
+<div data-role="total-budgeted"><%= number_to_currency(@person.amount) %></div>
+<div data-role="total-spent"><%= number_to_currency(@person.purchased_gifts.sum(:amount)) %></div>
+
 <% @purchased_gifts.each do |purchased_gift| %>
   <div data-role="name"><%= purchased_gift.name %></div>
   <div data-role="url"><%= purchased_gift.url %></div>

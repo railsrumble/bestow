@@ -4,7 +4,6 @@ feature "user sees list of lists" do
   scenario "for their lists as well as shared" do
     user = create(:user)
     other_user = create(:user)
-
     list = create(:list)
     second_list = create(:list, user: user)
     shared_list = create(:list, user: other_user)

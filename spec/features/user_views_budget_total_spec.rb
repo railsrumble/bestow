@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "user sees budget total" do
+feature "user views budget total" do
   scenario "for a list" do
     list = create(:list)
     create(:person, list: list, amount: 10)
