@@ -17,6 +17,6 @@ feature "user signs up" do
   end
 
   def click_sign_up
-    all(".signup").first.click
+    all(".sign-up-nav").first.click
   end
 end

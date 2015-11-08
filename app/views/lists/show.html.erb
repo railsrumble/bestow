@@ -1,23 +1,36 @@
-<div data-role="list"><%= @presenter.name %></div>
+<div class="row">
+  <div class="show-title" data-role="list"><%= @presenter.name %></div>
+</div>
 
-<div data-role="total-amount"><%= number_to_currency(@presenter.total_amount) %></div>
-
-<% @presenter.people.each do |person| %>
-  <%= link_to list_person_path(@presenter.list, person) do %>
-    <div data-role="person-image"> <%= image_tag person.avatar.url(:thumb) %> </div>
-    <div data-role="person"><%= person.name %></div>
-    <div data-role="amount"><%= number_to_currency(person.amount) %></div>
-  <% end %>
-<% end %>
-
-<% if @presenter.show_invitation? %>
-  <div data-role="invitation">
-    <%= simple_form_for [@presenter.list, @presenter.invitation] do |form| %>
-      <%= form.input :email %>
-      <%= form.button :submit, "Send Invitation" %>
-    <% end %>
+<div class="row">
+  <div class="col-md-12" id="total-amount" data-role="total-amount">
+    <div>Total Budgeted Amount:</div><%= number_to_currency(@presenter.total_amount) %>
   </div>
-<% end %>
+</div>
+
+<div clas="row">
+  <% @presenter.people.each do |person| %>
+    <%= link_to list_person_path(@presenter.list, person) do %>
+      <div class="person col-md-3 col-sm-6 col-xs-12">
+        <div data-role="person-image"> <%= image_tag person.avatar.url(:thumb), class: "img-circle" %> </div>
+        <div data-role="person"><%= person.name %></div>
+        <div data-role="amount"><%= number_to_currency(person.amount) %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% if @presenter.show_invitation? %>
+    <div class="col-md-12" data-role="invitation">
+      <div id="invite"><em>Want to invite someone?</em></div>
+      <%= simple_form_for [@presenter.list, @presenter.invitation] do |form| %>
+        <%= form.input :email %>
+        <%= form.button :submit, "Send Invitation" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to("Edit", edit_list_path(@presenter.list)) %>
 <%= link_to "Delete",

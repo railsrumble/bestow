@@ -19,38 +19,30 @@
   <body class="<%= body_class %>">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <div class="row">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-              <%= link_to root_path, class: "nav navbar-brand" do %>
-                <li><%= image_tag "bestowsub.png", class: "responsive-img submark" %></li>
-              <% end %>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <% if signed_in? %>
-                  <a data-role="current-user">
-                    <%= current_user.email %>
-                    <%= button_to "SIGN OUT", sign_out_path, method: :delete %>
-                  <% else %>
-                    <%= link_to "SIGN IN", sign_in_path %>
-                  <% end %>
-                  </a>
-              </li>
-
-              <%= link_to "SIGN UP", sign_up_path, class: "signup" %>
-            </ul>
-          </div><!-- /.navbar-collapse -->
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to root_path, class: "nav navbar-brand" do %>
+            <%= image_tag "bestowsub.png", class: "responsive-img submark" %>
+          <% end %>
         </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if signed_in? %>
+              <div class="center-block" id="username" data-role="current-user"><%= current_user.email %> </div>
+              <%= button_to "SIGN OUT", sign_out_path, class: "signout", method: :delete %>
+            <% else %>
+              <li><%= link_to "Sign In", sign_in_path, class: "sign-in-nav" %></li>
+              <li class="dropdown"><%= link_to "SIGN UP", sign_up_path, class: "sign-up-nav" %></li>
+            <% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <%= render "flashes" -%>

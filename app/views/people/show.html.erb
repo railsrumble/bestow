@@ -1,13 +1,18 @@
-<div data-role="person-name"><%= @person.name %></div>
+<div class="row">
+  <div class="show-title" data-role="person-name"><%= @person.name %></div>
+</div>
+<div class="row">
+  <div class="col-md-12" data-role="total-budgeted" id="total-amount"><div>Budged Amount:</div><%= number_to_currency(@person.amount) %></div>
+  <div data-role="total-spent" id="total-amount"><div>Spent so far:</div><%= number_to_currency(@person.purchased_gifts.sum(:amount)) %></div>
+</div>
 
-<div data-role="total-budgeted"><%= number_to_currency(@person.amount) %></div>
-<div data-role="total-spent"><%= number_to_currency(@person.purchased_gifts.sum(:amount)) %></div>
-
-<% @purchased_gifts.each do |purchased_gift| %>
-  <div data-role="name"><%= purchased_gift.name %></div>
-  <div data-role="url"><%= purchased_gift.url %></div>
-  <div data-role="amount"><%= number_to_currency(purchased_gift.amount) %></div>
-<% end %>
+<div class="row">
+  <% @purchased_gifts.each do |purchased_gift| %>
+    <div class="col-md-12" id="total-amount" data-role="name"><%= purchased_gift.name %></div>
+    <div class="col-md-12" id="total-amount" data-role="url"><%= purchased_gift.url %></div>
+    <div class="col-md-12" id="total-amount" data-role="amount"><%= number_to_currency(purchased_gift.amount) %></div>
+  <% end %>
+</div>
 
 <% @gift_ideas.each do |gift_idea| %>
   <div data-role="name"><%= gift_idea.name %></div>
@@ -15,5 +20,9 @@
   <div data-role="amount"><%= number_to_currency(gift_idea.amount) %></div>
 <% end %>
 
-<%= link_to("Add purchased gift", new_list_person_purchased_gift_path(list, @person))%>
-<%= link_to("Add gift idea", new_list_person_gift_idea_path(list, @person))%>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= link_to("Add purchased gift", new_list_person_purchased_gift_path(list, @person), class: "btn input")%>
+    <%= link_to("Add gift idea", new_list_person_gift_idea_path(list, @person))%>
+  </div>
+</div>
