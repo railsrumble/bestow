@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   has_many :others_lists, through: :list_shares, source: :list
 
   def all_lists
-    lists + others_lists
+    @all_lists ||= List.where("user_id = ? OR id IN (#{share_list_select})", id, id)
+  end
+
+  def share_list_select
+    "SELECT list_id
+     FROM list_shares
+     WHERE user_id = ?"
   end
 end
